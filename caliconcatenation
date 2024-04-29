@@ -1,0 +1,21 @@
+#caliconcatenation
+
+def solve(S: str) -> str:
+    calString = 'calico'
+
+    if S == 'calico':
+        return 'CALICO'
+
+    for n in range(5, 0, -1):
+        if calString[-n:] == S[:n]:
+            return 'CALICO' + S[n:]
+    return S
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        S = input()
+        print(solve(S))
+
+if __name__ == '__main__':
+    main()
