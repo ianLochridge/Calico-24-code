@@ -1,0 +1,31 @@
+def solve(S: int) -> str:
+    age, lifeTime, nextShower = map(int, S.split())
+    meteorsAfterNow = 0
+    meteorsBeforeNow = 0
+    futureMeteorAge = age+nextShower
+    pastDeadMeteorAge = age+nextShower
+
+    if age <= lifeTime: #if person = alive
+      meteorsBeforeNow = ((age+nextShower) // 50) 
+
+    else:
+       while pastDeadMeteorAge >= 0:
+            if pastDeadMeteorAge <= lifeTime:
+                meteorsBeforeNow += 1
+            pastDeadMeteorAge -= 50
+            
+    while futureMeteorAge <= lifeTime: #add 50yrs till death
+        futureMeteorAge+=50
+        meteorsAfterNow+=1
+    
+    return (meteorsBeforeNow+meteorsAfterNow)
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        S = input()
+        print(solve(S))
+
+if __name__ == '__main__':
+    main()
+
